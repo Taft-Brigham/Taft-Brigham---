@@ -1,12 +1,15 @@
 import requests
 import json
 import configparser as cfg
+import openai
 
 class telegram_bot():
     def __init__(self, config):
         self.token = self.read_token_from_config_file(config)
         self.base = "https://api.telegram.org/bot{}/".format(self.token)
+        openai.api_key = "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"
 
+        
     def get_updates(self, offset=None):
         url = self.base + "getUpdates?timeout=100"
         if offset:
